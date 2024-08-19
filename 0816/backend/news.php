@@ -9,6 +9,11 @@
                     <td width="10%">刪除</td>
                 </tr>
                 <?php
+                $total=${ucfirst($do)}->count();
+                $div=4;
+                $pages=ceil($total / $div);
+                $now =$_GET['p']??1;
+                $start=($now - 1) * $div;
                 $rows = ${ucfirst($do)}->all();
                 foreach($rows as $row):
                 ?>
@@ -27,6 +32,9 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div class="cent">
+            
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
@@ -41,6 +49,6 @@
                 </tr>
             </tbody>
         </table>
-
+       
     </form>
 </div>

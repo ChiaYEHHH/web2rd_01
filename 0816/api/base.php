@@ -126,9 +126,9 @@ $News= new DB('news');
 $Admin= new DB('admin');
 $Menu= new DB('menu');
 
-// if (!isset($_SESSION['view'])) {
-//     $total = $Total->find(1); //從 Total 表格中取出唯一一條或特定的一條紀錄
-//     $total['view']++;
-//     $Total->save($total);
-//     $_SESSION['view'] = $total['view'];
-// }
+if (!isset($_SESSION['view'])) {
+    $total = $Total->find(1); //從 Total 表格中取出唯一一條或特定的一條紀錄
+    $total['view']++;
+    $Total->save($total);
+    $_SESSION['view'] = $total['view'];
+}

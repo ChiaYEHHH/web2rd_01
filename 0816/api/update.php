@@ -14,7 +14,4 @@ if(!empty($_FILES['img']['tmp_name'])){
     $db->save($data);
 }
 
-
-
-
 to("../admin.php?do=$do");
