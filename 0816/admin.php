@@ -20,10 +20,12 @@
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
-	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-		<a title="" href="?">
-			<div class="ti" style="background:url('use/'); background-size:cover;"></div><!--標題-->
+		<?php
+		$title = $Title->find(['sh' => 1]);
+		?>
+		<a title="<?= $title['text']; ?>" href="./index.php">
+			<div class="ti" style="background:url('./images/<?= $title['img'];  ?>'); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
@@ -94,11 +96,14 @@
 				}
 				?>
 			</div>
-			
+
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"></span>
+			<?php
+			$bottom = $Bottom->find(1);
+			?>
+			<span class="t" style="line-height:123px;"><?= $bottom['text'] ?></span>
 		</div>
 	</div>
 
