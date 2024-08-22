@@ -24,8 +24,8 @@
     <iframe style="display:none;" name="back" id="back"></iframe>
     <div id="main">
         <?php
-		$title = $Title->find(['sh' => 1]);
-		?>
+        $title = $Title->find(['sh' => 1]);
+        ?>
         <a title="<?= $title['text']; ?>" href="./index.php">
             <div class="ti" style="background:url('./images/<?= $title['img'];  ?>'); background-size:cover;"></div>
             <!--標題-->
@@ -36,28 +36,42 @@
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
                     <?php
-					$menu = $Menu->all(['sh' => 1, 'main_id' => 0]);
-					foreach ($menu as $m):
-					?>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $m['href']; ?>">
+                    $menu = $Menu->all(['sh' => 1, 'main_id' => 0]);
+                    // dd($menu);
+                    foreach ($menu as $m):
+                    ?>
                         <div class="mainmu">
-                            <?= $m['text']; ?> </div>
-                    </a>
+                            <a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $m['href']; ?>"><?= $m['text']; ?>
+                            </a>
+                            <div class="mw">
+                                <?php
+                                $submenu = $Menu->all(['main_id' => $m['id']]);
+                                // dd($submenu);
+                                foreach ($submenu as $s):
+                                ?>
+                                    <div class="mainmu2">
+                                        <a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $s['href']; ?>"><?= $s['text']; ?>
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
+                <div class="dbor" style="margin:3px; width:95%; height:17%; line-height:80px;">
                     <span class="t">進站總人數 : <?= $Total->find(1)['view']; ?></span>
                 </div>
             </div>
+            
             <?php
-			$do = $_GET['do'] ?? 'main';
-			$file = "./front/{$do}.php";
-			if (file_exists($file)) {
-				include $file;
-			} else {
-				include "./front/main.php";
-			}
-			?>
+            $do = $_GET['do'] ?? 'main';
+            $file = "./front/{$do}.php";
+            if (file_exists($file)) {
+                include $file;
+            } else {
+                include "./front/main.php";
+            }
+            ?>
 
 
             <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
@@ -65,38 +79,46 @@
                 <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
                     onclick="lo('?do=login')">管理登入</button>
                 <div style="width:89%; height:480px;" class="dbor">
+
                     <span class="t botli">校園映象區</span>
-                    <div class="cent"><img src="./icon/up.jpg" alt="" srcset=""></div>
-                    <?php
-	$image=$Image->all(['sh'=>1]);
-	foreach($image)
-
-?>
-
-                    <div class="im cent" id="ssaa">
-
+                    <div class="cent" onclick="pp(1)" style="margin:5px 0">
+                        <img src="./icon/up.jpg" alt="" srcset="">
                     </div>
-                    <div class="cent"><img src="./icon/dn.jpg" alt="" srcset=""></div>
+
+                    <?php
+                    $images = $Image->all(['sh' => 1]);
+                    foreach ($images as $imgs => $img):
+                        // dd($images);
+                    ?>
+                        <div class="im cent" id="ssaa<?= $imgs; ?>" style="margin:15px 0">
+                            <img src="./images/<?= $img['img']; ?>"
+                                style="width: 150px;height:103px;border:2px solid orange">
+                        </div>
+                    <?php endforeach; ?>
+
+                    <div class="cent" onclick="pp(2)" style="margin:5px 0">
+                        <img src="./icon/dn.jpg" alt="" srcset="">
+                    </div>
 
                     <script>
-                    var nowpage = 0,
-                        num = 0;
+                        var nowpage = 0,
+                            num = <?= $Image->count(['sh' => 1]); ?>;
 
-                    function pp(x) {
-                        var s, t;
-                        if (x == 1 && nowpage - 1 >= 0) {
-                            nowpage--;
+                        function pp(x) {
+                            var s, t;
+                            if (x == 1 && nowpage - 1 >= 0) {
+                                nowpage--;
+                            }
+                            if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+                                nowpage++;
+                            }
+                            $(".im").hide()
+                            for (s = 0; s <= 2; s++) {
+                                t = s * 1 + nowpage * 1;
+                                $("#ssaa" + t).show()
+                            }
                         }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
-                            nowpage++;
-                        }
-                        $(".im").hide()
-                        for (s = 0; s <= 2; s++) {
-                            t = s * 1 + nowpage * 1;
-                            $("#ssaa" + t).show()
-                        }
-                    }
-                    pp(1)
+                        pp(1)
                     </script>
                 </div>
             </div>
@@ -105,9 +127,9 @@
         <div
             style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
             <?php
-			$bottom = $Bottom->find(1);
-			// dd($bottom);
-			?>
+            $bottom = $Bottom->find(1);
+            // dd($bottom);
+            ?>
             <span class="t" style="line-height:123px;"><?= $bottom['text']; ?></span>
         </div>
     </div>

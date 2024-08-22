@@ -132,3 +132,9 @@ if (!isset($_SESSION['view'])) {
     $Total->save($total);
     $_SESSION['view'] = $total['view'];
 }
+
+// 如果沒有$_SESSION['view']
+// 把$total資料撈出來
+// $total['view']加 1
+// 回存資料庫
+// 建立$_SESSION['view']=$total['view']

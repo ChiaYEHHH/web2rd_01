@@ -26,17 +26,20 @@ foreach ($_POST['id'] as $key => $id) {
                 $data['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
                 break;
             case 'total':
-
+                $data['view'] = $_POST['view'];
                 break;
             case 'bottom':
                 $data['text'] = $_POST['text'];
                 break;
 
             case 'admin':
-
+                $data['acc'] = $_POST['acc'][$key];
+                $data['pw'] = $_POST['pw'][$key];
                 break;
             case 'menu':
-
+                $data['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                $data['text'] = $_POST['text'][$key];
+                $data['href'] = $_POST['href'][$key];
                 break;
         }
 

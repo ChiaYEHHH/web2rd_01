@@ -1,14 +1,14 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-    <p class="t cent botli">頁尾版權管理</p>
+    <p class="t cent botli">進站總人數管理</p>
     <form method="post" action="./api/edit.php" enctype="multipart/form-data">
         <table width="100%">
             <tbody>
                 <tr class="yel">
                     <td width="50%">
-                        頁尾版權資料 :
+                    進站總人數 :
                     </td>
                     <td width="50%">
-                        <input type="text" name="text" id="text" value="<?= $Bottom->find(1)['text'] ?>" style="width:50%">
+                        <input type="text" name="view" id="view" value="<?= $Total->find(1)['view'] ?>" style="width:50%">
                     </td>
                 </tr>
                 <input type="hidden" name="id[]" value="1">
