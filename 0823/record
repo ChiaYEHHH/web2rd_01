@@ -1,0 +1,22 @@
+api
+1.
+if (!empty($_FILES['img']['tmp_name'])) {
+    move_uploaded_file($_FILES['img']['tmp_name'], "../image/" . $_FILES['img']['name']);
+    $_POST['img'] = $_FILES['img']['name'];
+}
+
+2.
+foreach ($_POST['id'] as $key => $id) {
+    if (!empty($_POST['del']) && in_array($id, $_POST['del'])) {
+        $db->del($id);
+    }}
+
+3.
+submenu.php
+
+back
+1.
+分頁功能
+
+modal
+1.submenu

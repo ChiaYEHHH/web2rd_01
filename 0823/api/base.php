@@ -109,11 +109,16 @@ function dd($array)
     echo "</pre>";
 }
 
-$data = [
-    'id' => '2',
-    'acc' => 'aaa',
-    'pw' => 'eeeeeee',
-];
+function to($url){
+   header("location:".$url);
+}
+
+
+// $data = [
+//     'id' => '2',
+//     'acc' => 'aaa',
+//     'pw' => 'eeeeeee',
+// ];
 
 $Title = new DB('title');
 $Ad = new DB('ad');
@@ -131,3 +136,12 @@ $Menu = new DB('menu');
 
 // dd($Admin->all());
 // dd($Admin->find(1));
+
+if(!isset($_SESSION['view'])){
+$total=$Total->find(1);
+// dd($total);
+$total['text']++;
+$Title->save($total);
+$_SESSION['view']=$total['text'];
+}
+// dd($_SESSION['view']);
