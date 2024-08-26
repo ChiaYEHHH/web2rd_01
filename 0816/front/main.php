@@ -50,7 +50,7 @@
 
         <ul class="ssaa" style="list-style-type:decimal;">
             <?php
-            $news = $News->all(['sh' => 1]);
+            $news = $News->all(['sh' => 1],"limit 5");
             // dd($news);
             foreach ($news as $row):
             ?>
