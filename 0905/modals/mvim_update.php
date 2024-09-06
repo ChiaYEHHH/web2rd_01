@@ -1,5 +1,5 @@
 <div class="cent" style="padding: 50px;">
-<form action="./api/add.php" method="post" enctype="multipart/form-data">
+<form action="./api/update.php" method="post" enctype="multipart/form-data">
     <h2 class="cent">更新圖片</h2>
     <hr>
     <table>

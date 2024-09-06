@@ -29,7 +29,7 @@
                             <input type="checkbox" name="del[]" id="<?= $row['id'] ?>"  value="<?= $row['id'] ?>">
                         </td>
                         <td>
-                            <button type="button" onclick="op('#cover','#cvr','./modals/<?=$do?>_update.php')">更新圖片</button>
+                            <button type="button" onclick="op('#cover','#cvr','./modals/<?=$do?>_update.php?id=<?= $row['id'] ?>')">更新圖片</button>
                         </td>
                     <input type="hidden" name="id[]" value="<?= $row['id'] ?>">
                     <input type="hidden" name="table" value="<?=$do;?>">
