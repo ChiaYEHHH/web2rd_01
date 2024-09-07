@@ -15,9 +15,16 @@ foreach ($_POST['id'] as $key => $id) {
             case 'total':
                 $data['text'] = $_POST['text'];
                 break;
-                // $data['text'] = $_POST['text'][$key];
-                // break;
-                case 'ad':
+            case 'admin':
+                $data['acc'] = $_POST['acc'][$key];
+                $data['pw'] = $_POST['pw'][$key];
+                break;
+            case 'menu':
+                $data['href'] = $_POST['href'][$key];
+                $data['text'] = $_POST['text'][$key];
+                $data['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                break;
+            case 'ad':
             case 'title':
             case 'news':
                 $data['text'] = $_POST['text'][$key];

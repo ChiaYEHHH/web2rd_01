@@ -8,14 +8,19 @@ foreach ($_POST['id'] as $key => $id) {
     if (!empty($_POST['del']) && in_array($id, $_POST['del'])) {
         $db->del($id);
     } else {
-
         $data = $db->find($id);
-        dd($data);
+        // dd($data);
         switch ($do) {
-            case 'title':
-                $data['sh'] = (isset($_POST['sh']) && $_POST['sh'] == $id) ? 1 : 0;
-                $data['text'] = $_POST['text'][$key];
+            case 'admin':
+                $data['acc'] = $_POST['acc'][$key];
+                $data['pw'] = $_POST['pw'][$key];
                 break;
+            case 'menu':
+                $data['text'] = $_POST['text'][$key];
+                $data['href'] = $_POST['href'][$key];
+                $data['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                break;
+            case 'title':
             case 'ad':
             case 'news':
                 $data['text'] = $_POST['text'][$key];
@@ -29,16 +34,6 @@ foreach ($_POST['id'] as $key => $id) {
             case 'image':
                 $data['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
                 break;
-            case 'admin':
-                $data['acc'] = $_POST['acc'][$key];
-                $data['pw'] = $_POST['pw'][$key];
-                break;
-            case 'menu':
-                $data['text'] = $_POST['text'][$key];
-                $data['href'] = $_POST['href'][$key];
-                $data['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
-                break;
-
             default;
         }
         $db->save($data);

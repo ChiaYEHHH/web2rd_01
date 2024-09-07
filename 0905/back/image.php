@@ -11,8 +11,12 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows = ${ucfirst($do)}->all();
-                // dd($rows);
+                $num=${ucfirst($do)}->count();
+                $div=4;
+                $pages=ceil($num / $div);
+                $now=$_GET['p']??1;
+                $start=($now -1) *$div;
+                $rows = ${ucfirst($do)}->all("limit $start,$div");
                 foreach ($rows as $row):
                 ?>
                     <tr>
@@ -36,6 +40,24 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div class="cent">
+            <?php
+            if($now -1 > 0){
+                $prev=$now-1;
+                echo "<a href='?do=news&p=$prev'> < </a>";
+            }
+
+            for ($i=1 ;$i<=$pages;$i++){
+                $font=($i == $now)?'24px':'18px';
+                echo "<a href='?do=news&p=$i' style='font-size:$font'> $i </a>";
+            }
+
+            if($now +1 <= $pages){
+                $next=$now+1;
+                echo "<a href='?do=news&p=$next'> > </a>";
+            }
+            ?>
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>

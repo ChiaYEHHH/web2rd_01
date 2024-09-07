@@ -10,7 +10,7 @@
     </table>
     <td class="cent">
         <input type="hidden" name="table" value="image">
-        <button type="submit">修改確定</button>
+        <button type="submit">新增</button>
         <button type="reset">重置</button>
     </td>
 </form>
