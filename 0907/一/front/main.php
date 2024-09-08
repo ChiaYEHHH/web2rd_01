@@ -10,20 +10,27 @@
 	<div style="height:32px; display:block;"></div>
 	<!-- <img src="" alt="" srcset=""> -->
 	<!--正中央-->
+	
+	<div style="width:100%; padding:2px; height:290px;">
+		<div id="mwww" loop="true" style="width:100%; height:100%;">
+			<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+			<!-- <img src="./icon/up.jpg" alt="" srcset=""> -->
+		</div>
+	</div>
 	<script>
 		var lin = new Array();
 		<?php
 		$mvs = $Mvim->all(['sh' => 1]);
-		dd($mvs);
+		// dd($mvs);
 		foreach ($mvs as $mv) {
-			echo "lin.push('./image/{$mv['img']}')";
+			echo "lin.push('image/{$mv['img']}');";
 		}
 		?>
 		console.log(lin);
 		
 		var now = 0;
 		if (lin.length > 1) {
-			setInterval("ww()", 500);
+			setInterval("ww()", 5000);
 			// now = 1;
 		}
 
@@ -34,15 +41,9 @@
 			if (now >= lin.length)
 				now = 0;
 		}
-		// ww();
+		ww();
 	</script>
-	<div style="width:100%; padding:2px; height:290px;">
-		<div id="mwww" loop="true" style="width:100%; height:100%;">
-			<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
-			<!-- <img src="./icon/up.jpg" alt="" srcset=""> -->
-		</div>
-	</div>
-	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
+	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative; overflow:auto">
 		<span class="t botli">最新消息區
 		</span>
 		<ul class="ssaa" style="list-style-type:decimal;">

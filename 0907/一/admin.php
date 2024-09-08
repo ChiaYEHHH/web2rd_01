@@ -72,8 +72,7 @@
 
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:15%; line-height:50px;">
-					<span class="t">進站總人數 :
-					<?= $_SESSION['view'] ?> </span>
+				<span class="t">進站總人數 :<?= $Total->find(1)['text'] ?> </span>
 				</div>
 			</div>
 			<div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -85,7 +84,7 @@
 								<a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
 							</td>
 							<td>
-								<button onclick="document.cookie='user=';location.replace('?')" style="width:99%; margin-right:2px; height:50px;">管理登出</button>
+								<a href="./api/logout.php"><button style="width:99%; margin-right:2px; height:50px;">管理登出</button></a>
 							</td>
 						</tr>
 					</tbody>

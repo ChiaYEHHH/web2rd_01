@@ -54,7 +54,7 @@
 
 			</div>
 			<div class="dbor" style="margin:3px; width:95%; height:15%; line-height:70px;">
-				<span class="t">進站總人數 :<?= $_SESSION['view'] ?> </span>
+				<span class="t">進站總人數 :<?= $Total->find(1)['text'] ?> </span>
 			</div>
 		</div>
 		<?php
